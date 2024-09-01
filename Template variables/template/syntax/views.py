@@ -21,6 +21,11 @@ def member_details(request, member_id):
     return render(request, 'details.html', context)
 
 
+def main(request):
+  template = loader.get_template('main.html')
+  return HttpResponse(template.render())
+
+
 
 def testing(request):
   template = loader.get_template('template.html')
