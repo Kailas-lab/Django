@@ -1,0 +1,7 @@
+<!-- myapp/templates/myapp/book_detail.html -->
+<h2>{{ book.title }}</h2>
+<p>Author: {{ book.author }}</p>
+<p>Published Date: {{ book.published_date }}</p>
+<a href="{% url 'book_update' book.id %}">Edit</a>
+<a href="{% url 'book_delete' book.id %}">Delete</a>
+<a href="{% url 'book_list' %}">Back to list</a>

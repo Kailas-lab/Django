@@ -1,0 +1,12 @@
+<!-- myapp/templates/myapp/book_list.html -->
+<h2>Book List</h2>
+<a href="{% url 'book_create' %}">Add New Book</a>
+<ul>
+    {% for book in books %}
+    <li>
+        <a href="{% url 'book_detail' book.title %}">{{ book.title }}</a> 
+        - <a href="{% url 'book_update' book.title %}">Edit</a> 
+        - <a href="{% url 'book_delete' book.title %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
