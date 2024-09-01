@@ -3,12 +3,20 @@
 <body>
 
 <ul>
-  {% for x in mymembers %}
-    <li>{{ x.firstname }}</li>
+  {% for x in cars %}
+    <li
+      {% if forloop.first %}
+        style='background-color:lightblue;'
+      {% endif %}
+    >{{ x }}</li>
   {% endfor %}
-</ul>
+</ul> 
 
-<p>In views.py you can see how to import and fetch members from the database.</p>
+<p>In views.py you can see {# inside comment#} what the fruits object looks like.</p>
 
 </body>
-</html>       
+</html>            
+
+{% comment "this was the original welcome message" %}
+    <h1>Welcome ladies and gentlemen</h1>
+{% endcomment %}
