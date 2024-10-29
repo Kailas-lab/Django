@@ -1,16 +1,8 @@
-# views.py
 from django.shortcuts import render
-from django.views import View
 from .forms import SimpleForm
 
-class SimpleFormView(View):
-    def get(self, request):
-        # Handle GET request (display the form)
-        form = SimpleForm()  # Create an empty form instance
-        return render(request, 'simple_form.html', {'form': form})
-
-    def post(self, request):
-        # Handle POST request (form submission)
+def simple_form_view(request):
+    if request.method == 'POST':
         form = SimpleForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
@@ -19,6 +11,8 @@ class SimpleFormView(View):
             # Process the data (e.g., print or save it)
             print(f"Name: {name}, Email: {email}, Age: {age}")
             return render(request, 'success.html', {'name': name})
-        
-        # If form is not valid, re-display the form with errors
-        return render(request, 'simple_form.html', {'form': form})
+    else:
+        form = SimpleForm()  # Create an empty form instance
+
+    # Render the form template for both GET and invalid POST requests
+    return render(request, 'simple_form.html', {'form': form})
